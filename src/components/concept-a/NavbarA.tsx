@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ExternalLink, Radio, Shield } from "lucide-react";
 import { CREATOR } from "@/data/creator";
 import { soundManager } from "@/lib/sound";
+import { handleKickClick } from "@/lib/kickLink";
 
 export const NavbarA: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,7 +78,10 @@ export const NavbarA: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             onMouseEnter={() => soundManager.playHover()}
-            onClick={() => soundManager.playTap()}
+            onClick={(e) => {
+              soundManager.playTap();
+              handleKickClick(e);
+            }}
             className="relative group overflow-hidden px-5 py-2.5 rounded-xl bg-[#53FC18] text-black font-extrabold text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_25px_rgba(83,252,24,0.6)] active:scale-95 flex items-center gap-2"
           >
             <Radio className="w-4 h-4 animate-pulse" />
@@ -92,6 +96,7 @@ export const NavbarA: React.FC = () => {
             href={CREATOR.kickUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => handleKickClick(e)}
             className="px-3 py-1.5 rounded-lg bg-[#53FC18] text-black font-extrabold text-xs tracking-wide"
           >
             LIVE
@@ -134,7 +139,10 @@ export const NavbarA: React.FC = () => {
                   href={CREATOR.kickUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    handleKickClick(e);
+                  }}
                   className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#53FC18] text-black font-extrabold text-sm tracking-wide shadow-lg shadow-[#53FC18]/20"
                 >
                   <Radio className="w-4 h-4" />

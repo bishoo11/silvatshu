@@ -9,6 +9,7 @@ import confetti from "canvas-confetti";
 import { CREATOR } from "@/data/creator";
 import { soundManager } from "@/lib/sound";
 import { useToast } from "../common/Toast";
+import { handleKickClick } from "@/lib/kickLink";
 
 export const HeroA: React.FC = () => {
   const { showToast } = useToast();
@@ -112,7 +113,10 @@ export const HeroA: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               onMouseEnter={() => soundManager.playHover()}
-              onClick={() => soundManager.playTap()}
+              onClick={(e) => {
+                soundManager.playTap();
+                handleKickClick(e);
+              }}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-[#53FC18] text-black font-extrabold text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_35px_rgba(83,252,24,0.7)] hover:scale-[1.02] active:scale-95 group"
             >
               <Radio className="w-5 h-5 animate-pulse" />

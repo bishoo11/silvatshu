@@ -17,6 +17,7 @@ import {
 } from "@/components/common/BrandIcons";
 import { SOCIAL_LINKS } from "@/data/socials";
 import { soundManager } from "@/lib/sound";
+import { handleKickClick } from "@/lib/kickLink";
 
 export const SocialHubA: React.FC = () => {
   const getIcon = (id: string) => {
@@ -70,7 +71,12 @@ export const SocialHubA: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               onMouseEnter={() => soundManager.playHover()}
-              onClick={() => soundManager.playTap()}
+              onClick={(e) => {
+                soundManager.playTap();
+                if (item.id === "kick") {
+                  handleKickClick(e);
+                }
+              }}
               className="group relative flex flex-col justify-between p-6 rounded-2xl bg-neutral-900/90 border border-white/10 hover:border-white/30 backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl overflow-hidden"
             >
               {/* Dynamic Hover Glow based on Brand Color */}

@@ -6,6 +6,7 @@ import { Radio, ExternalLink, Play, Sparkles, ShieldCheck, RefreshCw, Volume2, M
 import { WhatsAppIcon, KickIcon } from "@/components/common/BrandIcons";
 import { CREATOR } from "@/data/creator";
 import { soundManager } from "@/lib/sound";
+import { handleKickClick } from "@/lib/kickLink";
 
 interface KickStatus {
   isLive: boolean;
@@ -121,7 +122,10 @@ export const StreamSectionA: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onMouseEnter={() => soundManager.playHover()}
-                onClick={() => soundManager.playTap()}
+                onClick={(e) => {
+                  soundManager.playTap();
+                  handleKickClick(e);
+                }}
                 className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#53FC18]/15 hover:bg-[#53FC18]/25 border border-[#53FC18]/40 text-[#53FC18] text-xs font-mono font-bold transition-all"
               >
                 <span>kick.com/silvatshu</span>
@@ -230,7 +234,10 @@ export const StreamSectionA: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onMouseEnter={() => soundManager.playHover()}
-                onClick={() => soundManager.playTap()}
+                onClick={(e) => {
+                  soundManager.playTap();
+                  handleKickClick(e);
+                }}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#53FC18] text-black font-extrabold text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_25px_rgba(83,252,24,0.6)] hover:scale-105 active:scale-95"
               >
                 <span>OPEN ON KICK</span>

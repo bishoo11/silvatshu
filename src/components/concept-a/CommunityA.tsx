@@ -9,6 +9,7 @@ import confetti from "canvas-confetti";
 import { CREATOR } from "@/data/creator";
 import { soundManager } from "@/lib/sound";
 import { useToast } from "../common/Toast";
+import { handleKickClick } from "@/lib/kickLink";
 
 export const CommunityA: React.FC = () => {
   const { showToast } = useToast();
@@ -95,7 +96,10 @@ export const CommunityA: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             onMouseEnter={() => soundManager.playHover()}
-            onClick={() => soundManager.playTap()}
+            onClick={(e) => {
+              soundManager.playTap();
+              handleKickClick(e);
+            }}
             className="flex items-center gap-3 px-9 py-4 rounded-2xl bg-[#53FC18] hover:bg-[#45dc13] text-black font-black text-sm tracking-wider uppercase shadow-[0_0_35px_rgba(83,252,24,0.65)] ring-2 ring-[#53FC18]/60 transition-all hover:scale-105 active:scale-95"
           >
             <KickIcon className="w-5 h-5 text-black" />
