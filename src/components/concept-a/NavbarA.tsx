@@ -12,10 +12,10 @@ export const NavbarA: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "HOME", href: "#home" },
-    { name: "SOCIALS", href: "#socials" },
-    { name: "STREAM", href: "#stream" },
-    { name: "COMMUNITY", href: "#community" },
+    { name: "HOME", nameAr: "الرئيسية", href: "#home" },
+    { name: "SOCIALS", nameAr: "منصاتي", href: "#socials" },
+    { name: "STREAM", nameAr: "البث المباشر", href: "#stream" },
+    { name: "COMMUNITY", nameAr: "المجتمع", href: "#community" },
   ];
 
   return (
@@ -27,7 +27,7 @@ export const NavbarA: React.FC = () => {
           onMouseEnter={() => soundManager.playHover()}
           className="flex items-center gap-3 group focus:outline-none"
         >
-          <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-emerald-500/40 bg-neutral-900 group-hover:border-[#53FC18] transition-colors shadow-[0_0_15px_rgba(83,252,24,0.2)]">
+          <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-emerald-500/40 bg-neutral-900 group-hover:border-[#53FC18] transition-colors shadow-[0_0_15px_rgba(83,252,24,0.2)] shrink-0">
             <Image
               src={CREATOR.logo}
               alt="Silvatshu Mascot"
@@ -38,7 +38,7 @@ export const NavbarA: React.FC = () => {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-extrabold text-lg sm:text-xl tracking-wider text-white group-hover:text-[#53FC18] transition-colors">
+              <span className="font-extrabold text-base sm:text-xl tracking-wider text-white group-hover:text-[#53FC18] transition-colors">
                 {CREATOR.name}
               </span>
               <span className="font-arabic text-xs font-bold text-neutral-400 group-hover:text-emerald-300 transition-colors">
@@ -46,7 +46,7 @@ export const NavbarA: React.FC = () => {
               </span>
             </div>
             <div className="flex items-center gap-1.5 text-[11px] text-neutral-400 font-mono">
-              <span className="relative flex h-2 w-2">
+              <span className="relative flex h-2 w-2 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#53FC18] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#53FC18]"></span>
               </span>
@@ -91,13 +91,13 @@ export const NavbarA: React.FC = () => {
         </div>
 
         {/* Mobile Burger Toggle */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex md:hidden items-center gap-2.5">
           <a
             href={CREATOR.kickUrl}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => handleKickClick(e)}
-            className="px-3 py-1.5 rounded-lg bg-[#53FC18] text-black font-extrabold text-xs tracking-wide"
+            className="px-3 py-1.5 rounded-lg bg-[#53FC18] text-black font-extrabold text-xs tracking-wide shrink-0 shadow-sm"
           >
             LIVE
           </a>
@@ -106,7 +106,7 @@ export const NavbarA: React.FC = () => {
               setIsOpen(!isOpen);
               soundManager.playTap();
             }}
-            className="p-2 rounded-lg bg-neutral-900 border border-white/10 text-neutral-300 hover:text-white"
+            className="p-2 rounded-lg bg-neutral-900 border border-white/10 text-neutral-300 hover:text-white shrink-0 active:scale-95"
             aria-label="Toggle Navigation Menu"
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -123,18 +123,22 @@ export const NavbarA: React.FC = () => {
             exit={{ height: 0, opacity: 0 }}
             className="md:hidden border-t border-white/10 bg-[#07090D] overflow-hidden"
           >
-            <div className="px-5 py-6 space-y-4">
+            <div className="px-5 py-5 space-y-1">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block text-sm font-bold tracking-wider text-neutral-300 hover:text-[#53FC18] py-2 border-b border-white/5"
+                  onClick={() => {
+                    setIsOpen(false);
+                    soundManager.playTap();
+                  }}
+                  className="flex items-center justify-between text-sm font-bold tracking-wider text-neutral-200 hover:text-[#53FC18] py-3 px-2 border-b border-white/5 active:bg-white/5 rounded-lg transition-colors"
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  <span className="font-arabic text-xs font-semibold text-neutral-400">{link.nameAr}</span>
                 </a>
               ))}
-              <div className="pt-2">
+              <div className="pt-3">
                 <a
                   href={CREATOR.kickUrl}
                   target="_blank"
@@ -143,9 +147,9 @@ export const NavbarA: React.FC = () => {
                     setIsOpen(false);
                     handleKickClick(e);
                   }}
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#53FC18] text-black font-extrabold text-sm tracking-wide shadow-lg shadow-[#53FC18]/20"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#53FC18] text-black font-extrabold text-sm tracking-wide shadow-lg shadow-[#53FC18]/20 active:scale-95 transition-transform"
                 >
-                  <Radio className="w-4 h-4" />
+                  <Radio className="w-4 h-4 animate-pulse" />
                   <span>WATCH LIVE ON KICK</span>
                 </a>
               </div>

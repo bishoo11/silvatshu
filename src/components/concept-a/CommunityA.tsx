@@ -26,11 +26,11 @@ export const CommunityA: React.FC = () => {
         colors: ["#53FC18", "#5865F2", "#E1306C", "#F59E0B"],
       });
     } catch {}
-    showToast("إنت لسه هنا؟ 😂 تعالى الديسكورد وماتكسفش!", "sparkles");
+    showToast("إنت لسه هنا؟ 😂 منور يا غالي في مجتمع سيلفاتشو ❤️", "sparkles");
   };
 
   return (
-    <section id="community" className="py-28 px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
+    <section id="community" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden scroll-mt-20 sm:scroll-mt-24">
       {/* Background ambient lighting */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-emerald-600/10 via-[#5865F2]/10 to-transparent blur-[120px] pointer-events-none" />
 
@@ -66,26 +66,26 @@ export const CommunityA: React.FC = () => {
           <span className="text-xs font-mono font-bold tracking-widest text-[#53FC18] uppercase">
             THE INNER CIRCLE
           </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase tracking-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white uppercase tracking-tight">
             YOU&apos;RE ALREADY HERE.
           </h2>
-          <p className="text-2xl sm:text-3xl font-extrabold text-neutral-300 font-arabic" dir="rtl">
+          <p className="text-xl sm:text-3xl font-extrabold text-neutral-200 font-arabic px-2" dir="rtl">
             منور يا غالي.. لو انت هنا يبقي انت قريب مني ❤️
           </p>
-          <p className="text-sm sm:text-base text-neutral-400 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-neutral-400 max-w-xl mx-auto px-4">
             From squad voice channels to live watch parties, memes, and daily updates — the community is always active.
           </p>
         </div>
 
         {/* Community Action Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-4 max-w-md sm:max-w-none mx-auto w-full">
           <a
             href={CREATOR.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             onMouseEnter={() => soundManager.playHover()}
             onClick={() => soundManager.playTap()}
-            className="flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-neutral-900/90 hover:bg-neutral-800 text-white border border-white/15 hover:border-[#25D366] font-bold text-sm tracking-wide uppercase shadow-md transition-all hover:scale-105 active:scale-95"
+            className="flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-neutral-900/90 hover:bg-neutral-800 text-white border border-white/15 hover:border-[#25D366] font-bold text-sm tracking-wide uppercase shadow-md transition-all hover:scale-105 active:scale-95"
           >
             <WhatsAppIcon className="w-5 h-5 text-[#25D366]" />
             <span>WHATSAPP CHANNEL</span>
@@ -100,7 +100,7 @@ export const CommunityA: React.FC = () => {
               soundManager.playTap();
               handleKickClick(e);
             }}
-            className="flex items-center gap-3 px-9 py-4 rounded-2xl bg-[#53FC18] hover:bg-[#45dc13] text-black font-black text-sm tracking-wider uppercase shadow-[0_0_35px_rgba(83,252,24,0.65)] ring-2 ring-[#53FC18]/60 transition-all hover:scale-105 active:scale-95"
+            className="flex items-center justify-center gap-3 px-9 py-4 rounded-2xl bg-[#53FC18] hover:bg-[#45dc13] text-black font-black text-sm tracking-wider uppercase shadow-[0_0_35px_rgba(83,252,24,0.65)] ring-2 ring-[#53FC18]/60 transition-all hover:scale-105 active:scale-95"
           >
             <KickIcon className="w-5 h-5 text-black" />
             <span>FOLLOW ON KICK</span>
@@ -112,7 +112,7 @@ export const CommunityA: React.FC = () => {
             rel="noopener noreferrer"
             onMouseEnter={() => soundManager.playHover()}
             onClick={() => soundManager.playTap()}
-            className="flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-neutral-900/90 hover:bg-neutral-800 text-white border border-white/15 hover:border-[#E1306C] font-bold text-sm tracking-wide uppercase shadow-md transition-all hover:scale-105 active:scale-95"
+            className="flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-neutral-900/90 hover:bg-neutral-800 text-white border border-white/15 hover:border-[#E1306C] font-bold text-sm tracking-wide uppercase shadow-md transition-all hover:scale-105 active:scale-95"
           >
             <InstagramIcon className="w-5 h-5 text-[#E1306C]" />
             <span>INSTAGRAM</span>

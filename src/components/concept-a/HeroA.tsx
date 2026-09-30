@@ -38,42 +38,42 @@ export const HeroA: React.FC = () => {
   return (
     <section
       id="home"
-      className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-[92vh] flex items-center justify-center pt-28 sm:pt-32 pb-14 sm:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden scroll-mt-20 sm:scroll-mt-24"
     >
       {/* Dynamic Gaming Atmosphere Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] bg-gradient-to-tr from-[#53FC18]/12 via-[#00E5FF]/8 to-transparent rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center relative z-10">
         
         {/* Left Column: Bold Typography & CTAs */}
         <motion.div
           initial={{ opacity: 0, x: -35 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="lg:col-span-7 text-center lg:text-left space-y-6 order-2 lg:order-1"
+          className="lg:col-span-7 text-center lg:text-left space-y-5 sm:space-y-6 order-2 lg:order-1"
         >
           {/* Tactical Status Pill */}
-          <div className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-neutral-900/90 border border-emerald-500/30 shadow-[0_0_15px_rgba(83,252,24,0.15)] backdrop-blur-md">
-            <span className="relative flex h-2.5 w-2.5">
+          <div className="inline-flex items-center gap-2.5 sm:gap-3 px-3.5 py-1.5 rounded-full bg-neutral-900/90 border border-emerald-500/30 shadow-[0_0_15px_rgba(83,252,24,0.15)] backdrop-blur-md">
+            <span className="relative flex h-2.5 w-2.5 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#53FC18] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#53FC18]"></span>
             </span>
             <span className="text-xs font-mono font-bold text-neutral-200 tracking-wider">
               OFFICIAL HUB • {CREATOR.statusText}
             </span>
-            <span className="font-arabic text-xs font-semibold text-emerald-400 pl-1 border-l border-white/10" dir="rtl">
+            <span className="font-arabic text-xs font-semibold text-emerald-400 pl-1 border-l border-white/10 shrink-0" dir="rtl">
               أهو جه 🔥
             </span>
           </div>
 
           {/* Main Title & Arabic Display */}
           <div className="space-y-2">
-            <div className="flex flex-wrap items-baseline justify-center lg:justify-start gap-4">
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
+            <div className="flex flex-wrap items-baseline justify-center lg:justify-start gap-3 sm:gap-4">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
                 {CREATOR.name}
               </h1>
               <span
-                className="font-arabic text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#53FC18] opacity-90 drop-shadow-[0_0_20px_rgba(83,252,24,0.4)]"
+                className="font-arabic text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#53FC18] opacity-90 drop-shadow-[0_0_20px_rgba(83,252,24,0.4)]"
                 dir="rtl"
               >
                 {CREATOR.nameArabic}
@@ -117,7 +117,7 @@ export const HeroA: React.FC = () => {
                 soundManager.playTap();
                 handleKickClick(e);
               }}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-[#53FC18] text-black font-extrabold text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_35px_rgba(83,252,24,0.7)] hover:scale-[1.02] active:scale-95 group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-[#53FC18] text-black font-extrabold text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_35px_rgba(83,252,24,0.7)] hover:scale-[1.02] active:scale-95 group shadow-lg shadow-[#53FC18]/25"
             >
               <Radio className="w-5 h-5 animate-pulse" />
               <span>WATCH LIVE ON KICK</span>
@@ -159,20 +159,20 @@ export const HeroA: React.FC = () => {
           {/* Profile Card Container with interactive Easter egg */}
           <div
             onClick={handleAvatarClick}
-            className="relative cursor-pointer group"
+            className="relative cursor-pointer group select-none"
             title="دوس هنا وشوف المفاجأة! لايقاااااط 🔥"
           >
-            {/* Animated Layqat Popover Badge */}
+            {/* Animated Layqat Popover Badge - Centered over avatar for 100% visibility on all screens */}
             <AnimatePresence>
               {showLayqat && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.5, y: 15 }}
-                  animate={{ opacity: 1, scale: 1.1, y: -25 }}
-                  exit={{ opacity: 0, scale: 0.8, y: -10 }}
-                  transition={{ type: "spring", stiffness: 450, damping: 20 }}
-                  className="absolute -top-10 left-1/2 -translate-x-1/2 z-40 whitespace-nowrap bg-[#53FC18] text-black font-black text-xl sm:text-2xl px-6 py-2.5 rounded-2xl shadow-[0_0_35px_rgba(83,252,24,0.85)] border-2 border-black flex items-center gap-2 pointer-events-none"
+                  initial={{ opacity: 0, scale: 0.4 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.7 }}
+                  transition={{ type: "spring", stiffness: 480, damping: 22 }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 whitespace-nowrap bg-[#53FC18] text-black font-black text-xl sm:text-2xl px-5 sm:px-6 py-2.5 sm:py-3 rounded-2xl shadow-[0_0_45px_rgba(83,252,24,0.95)] border-2 border-black flex items-center justify-center gap-2 pointer-events-none"
                 >
-                  <span className="font-arabic font-black drop-shadow-sm" dir="rtl">
+                  <span className="font-arabic font-black tracking-wide drop-shadow-sm" dir="rtl">
                     لايقاااااط! 😂🔥
                   </span>
                 </motion.div>
@@ -180,7 +180,7 @@ export const HeroA: React.FC = () => {
             </AnimatePresence>
 
             {/* Outer Cyber Frame */}
-            <div className="relative w-56 sm:w-80 md:w-96 aspect-square rounded-3xl p-2 bg-gradient-to-b from-white/20 via-white/5 to-[#53FC18]/30 shadow-2xl transition-transform duration-500 group-hover:scale-105">
+            <div className="relative w-64 sm:w-80 md:w-96 aspect-square rounded-3xl p-2 bg-gradient-to-b from-white/20 via-white/5 to-[#53FC18]/30 shadow-2xl transition-transform duration-500 group-hover:scale-105">
               
               {/* Inner Picture Frame */}
               <div className="relative w-full h-full rounded-[22px] overflow-hidden bg-neutral-950 border border-white/10">
@@ -201,9 +201,9 @@ export const HeroA: React.FC = () => {
                 <div className="absolute bottom-3 left-3 w-3 h-3 border-b-2 border-l-2 border-[#53FC18]" />
                 <div className="absolute bottom-3 right-3 w-3 h-3 border-b-2 border-r-2 border-[#53FC18]" />
 
-                {/* Interactive Mascot Badge in bottom corner */}
-                <div className="absolute bottom-4 right-4 flex items-center gap-2 bg-neutral-950/90 border border-white/15 px-3 py-1.5 rounded-xl shadow-lg backdrop-blur-md group-hover:border-[#53FC18] transition-colors">
-                  <div className="relative w-6 h-6 rounded-full overflow-hidden shrink-0">
+                {/* Interactive Mascot Badge centered at bottom of portrait */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 sm:gap-2 bg-neutral-950/90 border border-white/15 px-3 py-1 sm:py-1.5 rounded-xl shadow-lg backdrop-blur-md group-hover:border-[#53FC18] transition-colors whitespace-nowrap z-10">
+                  <div className="relative w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden shrink-0">
                     <Image
                       src={CREATOR.logo}
                       alt="Bear Logo"
@@ -211,7 +211,7 @@ export const HeroA: React.FC = () => {
                       className="object-cover"
                     />
                   </div>
-                  <span className="font-arabic text-xs font-bold text-white group-hover:text-[#53FC18] transition-colors" dir="rtl">
+                  <span className="font-arabic text-[11px] sm:text-xs font-bold text-white group-hover:text-[#53FC18] transition-colors" dir="rtl">
                     سيلفاتشو • لايقاااااط 🔥
                   </span>
                 </div>

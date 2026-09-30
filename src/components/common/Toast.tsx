@@ -33,7 +33,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <ToastContext.Provider value={{ showToast }}>
       {children}
-      <div className="fixed bottom-6 right-6 z-50 pointer-events-none">
+      <div className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 z-50 pointer-events-none flex justify-center sm:justify-end">
         <AnimatePresence>
           {toast && (
             <motion.div
@@ -42,17 +42,19 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 15, scale: 0.95 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="pointer-events-auto flex items-center gap-3 bg-neutral-900/95 border border-white/15 text-white px-4 py-3 rounded-xl shadow-2xl backdrop-blur-xl"
+              className="pointer-events-auto flex items-center justify-between sm:justify-start gap-3 bg-neutral-900/95 border border-[#53FC18]/30 text-white px-4 py-3 rounded-2xl shadow-[0_10px_35px_rgba(0,0,0,0.8)] backdrop-blur-xl max-w-sm w-full sm:w-auto"
             >
-              {toast.icon === "sparkles" ? (
-                <Sparkles className="w-5 h-5 text-amber-400 shrink-0" />
-              ) : (
-                <CheckCircle2 className="w-5 h-5 text-[#53FC18] shrink-0" />
-              )}
-              <span className="text-sm font-medium pr-1">{toast.message}</span>
+              <div className="flex items-center gap-3">
+                {toast.icon === "sparkles" ? (
+                  <Sparkles className="w-5 h-5 text-amber-400 shrink-0" />
+                ) : (
+                  <CheckCircle2 className="w-5 h-5 text-[#53FC18] shrink-0" />
+                )}
+                <span className="text-sm font-medium pr-1">{toast.message}</span>
+              </div>
               <button
                 onClick={() => setToast(null)}
-                className="text-neutral-400 hover:text-white transition-colors ml-1 p-0.5 rounded focus:outline-none"
+                className="text-neutral-400 hover:text-white transition-colors ml-1 p-1 rounded-lg hover:bg-white/5 focus:outline-none shrink-0"
                 aria-label="Dismiss notification"
               >
                 <X className="w-4 h-4" />

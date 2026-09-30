@@ -51,7 +51,7 @@ export const StreamSectionA: React.FC = () => {
   };
 
   return (
-    <section id="stream" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 bg-black/40">
+    <section id="stream" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 bg-black/40 scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-6xl mx-auto space-y-8">
         
         {/* Section Header */}
@@ -171,24 +171,24 @@ export const StreamSectionA: React.FC = () => {
                 </div>
 
                 {/* Central Play Trigger Button */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center">
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 sm:gap-4 p-4 sm:p-6 text-center">
                   <button
                     onClick={handleStartPlayer}
                     onMouseEnter={() => soundManager.playHover()}
-                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#53FC18] text-black flex items-center justify-center shadow-[0_0_40px_rgba(83,252,24,0.75)] hover:scale-110 active:scale-95 transition-all group/btn"
+                    className="w-14 h-14 sm:w-22 sm:h-22 rounded-full bg-[#53FC18] text-black flex items-center justify-center shadow-[0_0_35px_rgba(83,252,24,0.75)] hover:scale-110 active:scale-95 transition-all group/btn shrink-0"
                     aria-label="تشغيل البث المباشر"
                   >
-                    <Play className="w-9 h-9 sm:w-11 sm:h-11 fill-current ml-1 transition-transform group-hover/btn:scale-105" />
+                    <Play className="w-6 h-6 sm:w-10 sm:h-10 fill-current ml-0.5 sm:ml-1 transition-transform group-hover/btn:scale-105" />
                   </button>
 
-                  <div className="space-y-1.5 max-w-md">
-                    <h4 className="text-lg sm:text-2xl font-black text-white uppercase drop-shadow tracking-wide">
+                  <div className="space-y-1 max-w-sm sm:max-w-md">
+                    <h4 className="text-sm sm:text-xl font-black text-white uppercase drop-shadow tracking-wide">
                       {status?.isLive
                         ? "سيلفاتشو لايف دلوقتي على KICK 🔥"
                         : "شغّل البث المباشر هنا في الموقع"}
                     </h4>
-                    <p className="text-xs sm:text-sm text-neutral-300 font-medium">
-                      دوس على الزرار لتشغيل مشغل كيك الرسمي ومتابعة البث مباشرة بدون مغادرة الموقع
+                    <p className="text-[11px] sm:text-xs text-neutral-300 font-medium line-clamp-2">
+                      دوس لتشغيل مشغل كيك الرسمي ومتابعة البث مباشرة بدون مغادرة الموقع
                     </p>
                   </div>
                 </div>
