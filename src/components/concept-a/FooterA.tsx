@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Heart } from "lucide-react";
+import { Heart, ExternalLink } from "lucide-react";
 import { CREATOR } from "@/data/creator";
 import { SOCIAL_LINKS } from "@/data/socials";
 import { soundManager } from "@/lib/sound";
@@ -57,9 +57,25 @@ export const FooterA: React.FC = () => {
           ))}
         </div>
 
-        {/* Copyright */}
-        <div className="text-xs font-mono text-neutral-500 text-center md:text-right">
-          © 2026 Silvatshu. All rights reserved.
+        {/* Copyright & Agency Credits */}
+        <div className="text-xs font-mono text-neutral-500 text-center md:text-right space-y-1.5">
+          <div>
+            © 2026 Silvatshu. All rights reserved.
+          </div>
+          <div className="flex items-center justify-center md:justify-end gap-1.5 text-neutral-400 text-xs font-sans">
+            <span>Built by</span>
+            <a
+              href="https://www.facebook.com/profile.php?id=61583323104981"
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseEnter={() => soundManager.playHover()}
+              className="inline-flex items-center gap-1 font-bold text-white hover:text-[#53FC18] transition-colors py-0.5 px-2 rounded-md bg-white/5 hover:bg-[#53FC18]/10 border border-white/10 hover:border-[#53FC18]/40 group"
+              title="BS Solutions"
+            >
+              <span className="text-[#53FC18] font-extrabold tracking-wide">BS Solutions</span>
+              <ExternalLink className="w-3 h-3 text-[#53FC18] opacity-75 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+          </div>
         </div>
 
       </div>

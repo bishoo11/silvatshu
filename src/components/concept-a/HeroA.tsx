@@ -8,12 +8,9 @@ import { WhatsAppIcon } from "@/components/common/BrandIcons";
 import confetti from "canvas-confetti";
 import { CREATOR } from "@/data/creator";
 import { soundManager } from "@/lib/sound";
-import { useToast } from "../common/Toast";
 import { handleKickClick } from "@/lib/kickLink";
 
 export const HeroA: React.FC = () => {
-  const { showToast } = useToast();
-  const [easterEggIndex, setEasterEggIndex] = useState(0);
   const [showLayqat, setShowLayqat] = useState(false);
 
   const handleAvatarClick = () => {
@@ -29,10 +26,6 @@ export const HeroA: React.FC = () => {
 
     setShowLayqat(true);
     setTimeout(() => setShowLayqat(false), 2400);
-
-    const msg = CREATOR.easterEggs[easterEggIndex % CREATOR.easterEggs.length];
-    setEasterEggIndex((prev) => prev + 1);
-    showToast(msg, "sparkles");
   };
 
   return (
@@ -212,7 +205,7 @@ export const HeroA: React.FC = () => {
                     />
                   </div>
                   <span className="font-arabic text-[11px] sm:text-xs font-bold text-white group-hover:text-[#53FC18] transition-colors" dir="rtl">
-                    سيلفاتشو • لايقاااااط 🔥
+                    سيلفاتشو • Official 👑
                   </span>
                 </div>
               </div>
