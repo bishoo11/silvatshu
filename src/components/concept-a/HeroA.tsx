@@ -3,16 +3,31 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Radio, Sparkles, Flame, ShieldAlert, Crosshair, Crown, Gamepad2, CheckCircle2 } from "lucide-react";
+import { Radio, Sparkles, Flame, ShieldAlert, Crosshair, Crown, Gamepad2, CheckCircle2, Copy, Check } from "lucide-react";
 import { WhatsAppIcon } from "@/components/common/BrandIcons";
 import confetti from "canvas-confetti";
 import { CREATOR } from "@/data/creator";
 import { soundManager } from "@/lib/sound";
+import { useToast } from "../common/Toast";
 import { handleKickClick } from "@/lib/kickLink";
 
 export const HeroA: React.FC = () => {
+  const { showToast } = useToast();
   const [showLayqat, setShowLayqat] = useState(false);
+  const [copiedId, setCopiedId] = useState(false);
   const isAvatarClicking = useRef(false);
+
+  const handleCopyPubgId = () => {
+    soundManager.playTap();
+    try {
+      navigator.clipboard.writeText(CREATOR.pubgId);
+      setCopiedId(true);
+      showToast(`تم نسخ PUBG ID: ${CREATOR.pubgId} 🎮`, "check");
+      setTimeout(() => setCopiedId(false), 2500);
+    } catch {
+      showToast(`PUBG ID: ${CREATOR.pubgId}`, "check");
+    }
+  };
 
   const handleAvatarClick = () => {
     if (isAvatarClicking.current) return;
@@ -90,7 +105,7 @@ export const HeroA: React.FC = () => {
             {CREATOR.bioA}
           </p>
 
-          {/* Tactical Badges */}
+          {/* Tactical Badges & PUBG ID */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 pt-1">
             <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold bg-neutral-900/90 border border-emerald-500/40 text-emerald-300 shadow-[0_0_15px_rgba(83,252,24,0.15)]">
               <CheckCircle2 className="w-3.5 h-3.5 text-[#53FC18]" />
@@ -104,6 +119,45 @@ export const HeroA: React.FC = () => {
               <Gamepad2 className="w-3.5 h-3.5 text-cyan-400" />
               FC Player
             </span>
+
+            {/* Interactive PUBG ID Copy Button */}
+            <button
+              onClick={handleCopyPubgId}
+              onMouseEnter={() => soundManager.playHover()}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold bg-neutral-900/90 border border-[#53FC18]/50 text-neutral-200 hover:text-white hover:border-[#53FC18] hover:bg-[#53FC18]/10 hover:shadow-[0_0_15px_rgba(83,252,24,0.3)] transition-all cursor-pointer group/id active:scale-95"
+              title="Click to copy PUBG Mobile ID"
+            >
+              <span className="text-[#53FC18] font-black">ID:</span>
+              <span className="tracking-wider select-all">{CREATOR.pubgId}</span>
+              {copiedId ? (
+                <Check className="w-3.5 h-3.5 text-[#53FC18]" />
+              ) : (
+                <Copy className="w-3.5 h-3.5 text-neutral-400 group-hover/id:text-[#53FC18] transition-colors" />
+              )}
+            </button>
+          </div>
+
+          {/* Quick Creator Stats Strip */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-2 max-w-xl mx-auto lg:mx-0">
+            {CREATOR.stats.map((stat, idx) => (
+              <div
+                key={idx}
+                className="bg-neutral-900/80 border border-white/10 rounded-xl p-2.5 sm:p-3 text-center backdrop-blur-md hover:border-[#53FC18]/40 transition-colors shadow-sm"
+              >
+                <div
+                  className="text-base sm:text-lg font-black font-mono tracking-tight"
+                  style={{ color: stat.color }}
+                >
+                  {stat.value}
+                </div>
+                <div className="text-[10px] sm:text-[11px] font-mono font-bold text-neutral-300 uppercase tracking-wider">
+                  {stat.label}
+                </div>
+                <div className="text-[10px] font-arabic font-semibold text-neutral-500" dir="rtl">
+                  {stat.sublabel}
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* Action CTAs */}
