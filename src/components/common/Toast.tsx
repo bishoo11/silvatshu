@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, Sparkles, X } from "lucide-react";
 
@@ -19,9 +19,17 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({
     icon?: "check" | "sparkles";
   } | null>(null);
 
+  const lastToastTime = useRef<number>(0);
+
   const showToast = useCallback(
     (message: string, icon: "check" | "sparkles" = "check") => {
-      const id = Date.now();
+      const now = Date.now();
+      if (now - lastToastTime.current < 2000) {
+        return; // Prevent duplicate rapid firing
+      }
+      lastToastTime.current = now;
+
+      const id = now;
       setToast({ id, message, icon });
       setTimeout(() => {
         setToast((current) => (current?.id === id ? null : current));

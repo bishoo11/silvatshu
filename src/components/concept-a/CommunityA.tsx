@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Sparkles, Heart, Smile } from "lucide-react";
@@ -13,11 +13,16 @@ import { handleKickClick } from "@/lib/kickLink";
 
 export const CommunityA: React.FC = () => {
   const { showToast } = useToast();
-  const [clickedEasterEgg, setClickedEasterEgg] = useState(false);
+  const isSurprising = useRef(false);
 
   const handleSurprise = () => {
+    if (isSurprising.current) return;
+    isSurprising.current = true;
+    setTimeout(() => {
+      isSurprising.current = false;
+    }, 2000);
+
     soundManager.playSuccess();
-    setClickedEasterEgg(true);
     try {
       confetti({
         particleCount: 60,
@@ -26,7 +31,7 @@ export const CommunityA: React.FC = () => {
         colors: ["#53FC18", "#5865F2", "#E1306C", "#F59E0B"],
       });
     } catch {}
-    showToast("إنت لسه هنا؟ 😂 منور يا غالي في مجتمع سيلفاتشو ❤️", "sparkles");
+    showToast("منور يا غالي في عيلة سيلفاتشو ❤️", "sparkles");
   };
 
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Radio, Sparkles, Flame, ShieldAlert, Crosshair, Crown, Gamepad2, CheckCircle2 } from "lucide-react";
@@ -12,8 +12,15 @@ import { handleKickClick } from "@/lib/kickLink";
 
 export const HeroA: React.FC = () => {
   const [showLayqat, setShowLayqat] = useState(false);
+  const isAvatarClicking = useRef(false);
 
   const handleAvatarClick = () => {
+    if (isAvatarClicking.current) return;
+    isAvatarClicking.current = true;
+    setTimeout(() => {
+      isAvatarClicking.current = false;
+    }, 2400);
+
     soundManager.playSuccess();
     try {
       confetti({
