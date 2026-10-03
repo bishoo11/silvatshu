@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Cairo } from "next/font/google";
 import "./globals.css";
+import { JsonLd } from "@/components/common/JsonLd";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -16,57 +17,109 @@ const cairo = Cairo({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#080A0E",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#07090D" },
+    { media: "(prefers-color-scheme: light)", color: "#07090D" },
+  ],
+  colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://silvatshu.com"),
-  title: "Silvatshu | Streamer & Content Creator",
+  metadataBase: new URL("https://silvatshu.social"),
+  title: {
+    default: "سيلفاتشو (Silvatshu) | الموقع الرسمي • Official Gaming & Stream Hub",
+    template: "%s | سيلفاتشو (Silvatshu)",
+  },
   description:
-    "Official home of Silvatshu — streams, gaming, videos, socials and community.",
+    "الموقع الرسمي لـ سيلفاتشو (Silvatshu) — ستريمر كيك الرسمي، شريك ببجي موبايل، قائد كلان SHU، وروابط منصات البث والمجتمع وقنوات التواصل الرسمية. Official Hub of Silvatshu: streams, gaming & community.",
+  applicationName: "Silvatshu Official Hub",
   keywords: [
-    "Silvatshu",
     "سيلفاتشو",
+    "سيلفا",
+    "سيلفاتشو ببجي",
+    "سيلفاتشو كيك",
+    "كلان شو",
+    "كلان شو ببجي",
+    "ستريمر سيلفاتشو",
+    "ستريمر مصري",
+    "ببجي موبايل",
+    "كيك بث مباشر",
+    "بث سيلفاتشو",
+    "Silvatshu",
+    "Silva",
+    "Silvatshu PUBG",
+    "Silvatshu Kick",
+    "Silvatshu Discord",
+    "Silvatshu WhatsApp",
+    "Silvatshu Instagram",
+    "Silvatshu Official",
+    "SHU Clan",
     "Egyptian Streamer",
-    "Kick Streamer",
-    "PUBG Mobile",
-    "Gaming Creator",
-    "Egypt Gaming",
+    "PUBG Mobile Partner",
+    "Kick Streamer Egypt",
+    "586205178",
   ],
-  authors: [{ name: "Silvatshu" }],
+  authors: [{ name: "Silvatshu", url: "https://silvatshu.social" }],
   creator: "Silvatshu",
+  publisher: "BS Solutions",
+  alternates: {
+    canonical: "https://silvatshu.social",
+    languages: {
+      "ar-EG": "https://silvatshu.social",
+      "en-US": "https://silvatshu.social",
+    },
+  },
   openGraph: {
     type: "website",
     locale: "ar_EG",
     alternateLocale: ["en_US"],
-    url: "https://silvatshu.com",
-    title: "Silvatshu | Streamer & Content Creator",
+    url: "https://silvatshu.social",
+    siteName: "سيلفاتشو • Silvatshu Official",
+    title: "سيلفاتشو (Silvatshu) | الموقع الرسمي • Official Gaming & Stream Hub",
     description:
-      "Official home of Silvatshu — streams, gaming, videos, socials and community.",
-    siteName: "SILVATSHU",
+      "الموقع الرسمي لـ سيلفاتشو (Silvatshu) — ستريمر كيك، شريك ببجي موبايل، كلان شو، والروابط الرسمية.",
     images: [
       {
         url: "/assets/silvatshu-profile.png",
         width: 640,
         height: 640,
-        alt: "Silvatshu Official Portrait",
+        alt: "سيلفاتشو Silvatshu Official",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Silvatshu | Streamer & Content Creator",
+    title: "سيلفاتشو (Silvatshu) | الموقع الرسمي",
     description:
-      "Official home of Silvatshu — streams, gaming, videos, socials and community.",
+      "الموقع الرسمي لـ سيلفاتشو — ستريمر كيك وشريك ببجي موبايل. شاهد البث المباشر وتواصل مع المجتمع.",
     images: ["/assets/silvatshu-profile.png"],
+    creator: "@silvatshu",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
+  manifest: "/manifest.webmanifest",
+  category: "entertainment",
 };
 
 export default function RootLayout({
@@ -76,10 +129,13 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
+      lang="ar"
       className={`${jakarta.variable} ${cairo.variable} h-full scroll-smooth antialiased`}
       dir="ltr"
     >
+      <head>
+        <JsonLd />
+      </head>
       <body className="min-h-full flex flex-col bg-[#07090D] text-slate-100 selection:bg-[#53FC18]/30 selection:text-[#53FC18]">
         {children}
       </body>

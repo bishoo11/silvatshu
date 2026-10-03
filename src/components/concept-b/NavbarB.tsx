@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Radio, ArrowUpRight, Compass, Sparkles } from "lucide-react";
+import { Menu, X, Radio, ArrowUpRight } from "lucide-react";
 import { CREATOR } from "@/data/creator";
 import { soundManager } from "@/lib/sound";
 

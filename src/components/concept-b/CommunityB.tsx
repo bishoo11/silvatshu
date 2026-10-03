@@ -2,8 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { Sparkles, ArrowUpRight } from "lucide-react";
 import { WhatsAppIcon, KickIcon, InstagramIcon } from "@/components/common/BrandIcons";
 import confetti from "canvas-confetti";
 import { CREATOR } from "@/data/creator";

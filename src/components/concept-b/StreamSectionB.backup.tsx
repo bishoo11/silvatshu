@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Radio, ExternalLink, Play, Clock, Sparkles } from "lucide-react";
 import { CREATOR } from "@/data/creator";
 import { soundManager } from "@/lib/sound";

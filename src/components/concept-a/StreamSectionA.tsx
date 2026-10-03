@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Radio, ExternalLink, Play, Sparkles, ShieldCheck, RefreshCw, Volume2, MonitorPlay } from "lucide-react";
-import { WhatsAppIcon, KickIcon } from "@/components/common/BrandIcons";
+import { Radio, ExternalLink, Play, ShieldCheck, Volume2 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/common/BrandIcons";
 import { CREATOR } from "@/data/creator";
 import { soundManager } from "@/lib/sound";
 import { handleKickClick } from "@/lib/kickLink";
@@ -18,31 +18,28 @@ interface KickStatus {
 export const StreamSectionA: React.FC = () => {
   const [showPlayer, setShowPlayer] = useState(false);
   const [status, setStatus] = useState<KickStatus | null>(null);
-  const [checking, setChecking] = useState(false);
-
-  const checkLiveStatus = async () => {
-    setChecking(true);
-    try {
-      const res = await fetch("/api/kick-status");
-      if (res.ok) {
-        const data = await res.json();
-        setStatus(data);
-        if (data.isLive) {
-          // If streamer is live, we can suggest or auto-load player
-        }
-      }
-    } catch {
-      // Fallback
-    } finally {
-      setChecking(false);
-    }
-  };
 
   useEffect(() => {
-    checkLiveStatus();
-    // Poll every 90 seconds
-    const interval = setInterval(checkLiveStatus, 90000);
-    return () => clearInterval(interval);
+    let isMounted = true;
+
+    const fetchLiveStatus = async () => {
+      try {
+        const res = await fetch("/api/kick-status");
+        if (res.ok && isMounted) {
+          const data = await res.json();
+          setStatus(data);
+        }
+      } catch {
+        // Fallback
+      }
+    };
+
+    fetchLiveStatus();
+    const interval = setInterval(fetchLiveStatus, 90000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
   }, []);
 
   const handleStartPlayer = () => {

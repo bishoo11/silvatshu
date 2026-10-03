@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Radio, Copy, Check, Sparkles, MapPin, Gamepad2, ArrowUpRight } from "lucide-react";
+import { Radio, Copy, Check, Sparkles, ArrowUpRight } from "lucide-react";
 import { WhatsAppIcon } from "@/components/common/BrandIcons";
 import confetti from "canvas-confetti";
 import { CREATOR } from "@/data/creator";

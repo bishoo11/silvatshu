@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Radio, ExternalLink, Play, Clock, Sparkles, ShieldCheck, Volume2 } from "lucide-react";
-import { WhatsAppIcon, KickIcon } from "@/components/common/BrandIcons";
+import { Radio, ExternalLink, Play, Clock } from "lucide-react";
+import { WhatsAppIcon } from "@/components/common/BrandIcons";
 import { CREATOR } from "@/data/creator";
 import { soundManager } from "@/lib/sound";
 

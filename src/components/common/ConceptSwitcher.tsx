@@ -15,13 +15,11 @@ export const ConceptSwitcher: React.FC<ConceptSwitcherProps> = ({
   currentConcept,
   onSwitch,
 }) => {
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(() => soundManager.isMuted);
   const [isExpanded, setIsExpanded] = useState(false);
   const { showToast } = useToast();
 
   useEffect(() => {
-    setIsMuted(soundManager.isMuted);
-
     const handleKey = (e: KeyboardEvent) => {
       if (e.altKey && e.key === "1") {
         onSwitch("a");

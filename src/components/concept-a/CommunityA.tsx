@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Sparkles, Heart, Smile } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { WhatsAppIcon, KickIcon, InstagramIcon } from "@/components/common/BrandIcons";
 import confetti from "canvas-confetti";
 import { CREATOR } from "@/data/creator";

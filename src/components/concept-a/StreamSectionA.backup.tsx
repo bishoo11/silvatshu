@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Radio, ExternalLink, Play, MessageSquare, Flame, CheckCircle, ShieldCheck } from "lucide-react";
+import { Radio, ExternalLink, Play, MessageSquare, Flame, ShieldCheck } from "lucide-react";
 import { CREATOR } from "@/data/creator";
 import { soundManager } from "@/lib/sound";
 
